@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Database\Seeders\LocalSeeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,16 +16,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory()->create([
+        Artisan::call('abilities:refresh');
+
+        User::factory()->admin()->create([
             'name' => 'Admin User',
             'email' => 'admin@test.io',
         ]);
         
-        \App\Models\User::factory()->create([
+        User::factory()->user()->create([
             'name' => 'User',
             'email' => 'user@test.io',
         ]);
 
-        // \App\Models\User::factory(10)->create();
+        if (app()->environment(['local']) || app()->environment(['staging'])) {
+            $this->call(LocalSeeder::class);
+        }
     }
 }
