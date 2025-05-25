@@ -7,10 +7,7 @@ export function useLogout() {
 
   const logout = async () => {
     await auth.logout()
-
-    // TODO: Alert for successful logout
-
-    router.replace({ name: 'dashboard' })
+    router.replace({ name: 'login' })
   }
 
   return {
