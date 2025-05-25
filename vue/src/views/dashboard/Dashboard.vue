@@ -2,18 +2,18 @@
     <Header :title="'Dashboard'" :subtitle="''" />
 
     <Container class="dashboard">
-        <div class="mx-5 text-center">
-            <div class="card">
-                <h3 class="card-title">Welcome to the Dashboard</h3>
-                <div class="card-body">
-                    <p>This is a dashboard</p>
-                </div>
-            </div>
-        </div>
+        <template v-if="loggedInUser.role.name == 'admin'">
+            Admin User
+        </template>
+        <template v-else>
+            User
+        </template>
     </Container>
-  </template>
-  
-  <script lang="ts" setup>
+</template>
 
-  </script>
-  
+<script lang="ts" setup>
+import { useLoggedInUser } from '@/composables/use-logged-in-user'
+
+const { loggedInUser } = useLoggedInUser()
+
+</script>
