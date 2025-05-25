@@ -1,0 +1,76 @@
+.nav-horizontal {
+    flex: 0 0 auto; // required for safari to overflow properly
+    background: var(--dark-alt);
+    border-bottom: none;
+    position: relative;
+
+    .nav-link {
+        padding: 1rem 1.25rem 0.75rem 1.25rem;
+        color: var(--light);
+        font-weight: medium;
+        border-bottom: none;
+
+        &:hover {
+            background-color: hwb(202 0% 26% / 0.2);
+            border-bottom: solid 5px var(--primary);
+            color: var(--primary);
+        }
+    }
+    .nav-item {
+        &.active {
+            background: var(--dark-alt);
+            border-bottom: solid 5px var(--primary);
+            .nav-link {
+                color: var(--primary) !important;
+            }
+
+            &:hover {
+                background-color: hwb(202 0% 26% / 0.2);
+                border-bottom: none !important;
+                color: var(--primary);
+            }
+        }
+    }
+
+    li {
+        &.hideshow {
+            position: absolute !important;
+            right: 0;
+            float: right;
+
+            ul {
+                border-radius: 0;
+                position: absolute;
+                background: #fff;
+                display: none;
+                min-width: 240px;
+                max-width: 300px;
+                right: 0px;
+                top: 3px;
+                list-style: none;
+                padding-left: 0;
+                box-shadow: none;
+                margin-top: 0.25rem;
+                margin-right: 0.25rem;
+                z-index: 10; // ensure list sits ontop of other content - specifically other horizontal navigation bars
+
+                .nav-link {
+                    padding: 1rem 1.25rem 1rem 1.25rem;
+                    border-bottom: none;
+                    border-left: 4px solid transparent;
+
+                    &:hover,
+                    &:focus { border-left-color: gray; }
+
+                    &.active { 
+                        // border-left-color: $primary; 
+                    }
+                }
+
+                .nav-item.active .nav-link { 
+                    // border-left-color: $primary; 
+                }
+            }
+        }
+    }
+}

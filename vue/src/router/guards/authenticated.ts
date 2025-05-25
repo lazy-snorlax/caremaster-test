@@ -14,10 +14,10 @@ export default (router: Router) =>
             }
         } catch {
             // If the intended route is restricted we'll redirect back to the login page with the intended path.
-            console.log('>>> Route Redirect: ', to.meta.restricted, to.meta.authenticate)
+            console.log('>>> Route Redirect: ', to.meta, to.meta.restricted, to.meta.authenticate)
             if (to.meta.restricted !== false) {
                 return {
-                    name: 'login',
+                    name: 'dashboard',
                     replace: true,
                     query: {
                         redirect: to.path

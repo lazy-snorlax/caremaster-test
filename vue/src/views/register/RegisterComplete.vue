@@ -4,7 +4,7 @@
       <h1>Registration Complete</h1>
       
       <template v-if="loggedInUser">
-        <p>Welcome to Story Share</p>
+        <p>Welcome to the Dashboard</p>
         <p>Click below to return to the dashboard</p>
       </template>
       <p v-else>

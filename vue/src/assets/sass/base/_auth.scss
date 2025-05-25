@@ -1,0 +1,59 @@
+//
+// Auth
+// --------------------------------------------------
+
+.auth {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-alt);
+    background-position: center center;
+    background-size: cover;
+
+    .card-authentication {
+        background-color: var(--dark);
+        color: var(--primary);
+        .form-control {
+            background-color: var(--dark);
+            color: var(--white);
+            border-color: var(--grey);
+        }
+        a {
+            color: var(--primary);
+        }
+        .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            &:hover {
+                color: var(--white);
+                background-color: var(--primary-alt);
+            }
+        }
+    }
+}
+
+.card-authentication {
+    flex-grow: 1;
+    width: 100%; // IE bug fix causing card to sit to one side
+    max-width: 560px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 1rem;
+
+    .logo {
+        max-width: 60%;
+        max-height: 4rem;
+        margin-left: 0;
+        margin-bottom: 2rem;
+    }
+
+    a {
+        color: var(--primary) !important;
+        &:hover {
+            color: var(--light-alt) !important;
+            background: none !important;
+        }
+    }
+}

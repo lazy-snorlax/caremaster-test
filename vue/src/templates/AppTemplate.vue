@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper" :class="`${is_expanded ? 'toggled' : ''}`">
-    <!-- <Sidebar /> -->
+    <Sidebar />
 
     <div id="page-content-wrapper" class="dark">
       <RouterView v-slot="{ Component }">
@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 import { ModalsContainer, useModal } from 'vue-final-modal'
-// import Sidebar from '../components/app/Sidebar.vue'
+import Sidebar from '../components/app/Sidebar.vue'
 import { useAppStore } from '../stores/app'
 import { storeToRefs } from 'pinia'
 
