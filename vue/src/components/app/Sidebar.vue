@@ -11,10 +11,10 @@
 
 		<div class="middle flex flex-column">
 			<ul class="nav">
-				<li class="nav-item">
+				<li class="nav-item" v-if="loggedInUser.role.name == 'admin'">
 					<a class="nav-link">Companies</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" v-if="loggedInUser.role.name == 'admin'">
 					<a class="nav-link">Users</a>
 				</li>
 			</ul>
