@@ -10,12 +10,20 @@
         </div>
 
 		<div class="middle flex flex-column">
-			<ul class="nav">
-				<li class="nav-item" v-if="loggedInUser.role.name == 'admin'">
+			<ul class="nav" v-if="loggedInUser.role.name == 'admin'">
+				<li class="nav-item">
 					<a class="nav-link">Companies</a>
 				</li>
-				<li class="nav-item" v-if="loggedInUser.role.name == 'admin'">
+				<li class="nav-item">
 					<a class="nav-link">Users</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Settings</a>
+				</li>
+			</ul>
+			<ul class="nav" v-else>
+				<li class="nav-item">
+					<a class="nav-link">Settings</a>
 				</li>
 			</ul>
 		</div>
