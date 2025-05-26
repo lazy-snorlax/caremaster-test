@@ -2,7 +2,9 @@
     <div id="sidebar-wrapper">
 		<div class="top">
 			<div class="logo">
-				<h5 class="text-3xl">DASHBOARD</h5>
+				<router-link :to="{ name: 'dashboard' }">
+					<h5 class="text-3xl">DASHBOARD</h5>
+				</router-link>
 				<button class="close-sidebar"  @click="sidebarToggle">
 					<i class="fa fa-times"></i>
 				</button>
@@ -12,14 +14,14 @@
 		<div class="middle flex flex-column">
 			<ul class="nav" v-if="loggedInUser.role.name == 'admin'">
 				<li class="nav-item">
-					<a class="nav-link">Companies</a>
+					<router-link :to="{ name: 'companies' }" class="nav-link">Companies</router-link>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a class="nav-link">Users</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link">Settings</a>
-				</li>
+				</li> -->
 			</ul>
 			<ul class="nav" v-else>
 				<li class="nav-item">
