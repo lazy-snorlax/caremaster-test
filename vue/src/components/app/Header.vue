@@ -5,7 +5,7 @@
         </div>
         <div class="middle">
             <div class="page-title mx-3 my-3 text-center">
-                <h1>{{ title }}</h1>
+                <h1 class="">{{ title }}</h1>
                 <p v-if="subtitle" class="subheading">{{ subtitle }}</p>
             </div>
         </div>
@@ -83,7 +83,7 @@ header.page-header {
             max-width: 100%;
             flex: 1 1 100%;
             h1 {
-                font-size: 1.25rem;
+                font-size: 2.25rem;
                 font-weight: 700;
                 margin-bottom: 0;
                 width: 100%;
