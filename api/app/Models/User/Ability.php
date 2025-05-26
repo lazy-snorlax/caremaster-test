@@ -37,11 +37,11 @@ class Ability extends BouncerAbility
     /**
      * Ability constants.
      */
-    const READ_EMPLOYEES = 'read clients';
-    const WRITE_EMPLOYEES = 'write clients';
+    const READ_EMPLOYEES = 'read employees';
+    const WRITE_EMPLOYEES = 'write employees';
 
-    const READ_COMPANY = 'read organisations';
-    const WRITE_COMPANY = 'write organisations';
+    const READ_COMPANY = 'read companies';
+    const WRITE_COMPANY = 'write companies';
 
     const READ_USERS = 'read users';
     const WRITE_USERS = 'write users';
