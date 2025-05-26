@@ -34,7 +34,10 @@
             </div>
         </div>
 
-        <h2 class="text-3xl text-left text-green-500 mt-10">EMPLOYEES</h2>
+        <div class="flex">
+            <h2 class="text-3xl text-left text-green-500 mt-10">EMPLOYEES</h2>
+            <button class="mt-auto ms-auto btn btn-success">+ Employee</button>
+        </div>
         <div class="card bg-gray-700 text-green-500 card-md shadow-sm mb-2">
             <div class="card-body grid grid-cols-5 text-green-500 border-b-2">
                 <div class="card-title">FIRST</div>
