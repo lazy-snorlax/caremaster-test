@@ -13,7 +13,7 @@ class CompanyResource extends JsonResource{
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'abn' => $this->abn,
+            'abn' => (int)$this->abn,
             'address' => $this->address,
             'employees' => []
         ];
