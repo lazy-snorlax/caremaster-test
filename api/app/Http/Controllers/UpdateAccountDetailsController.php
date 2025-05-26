@@ -24,6 +24,6 @@ class UpdateAccountDetailsController extends Controller
 
         $user->save();
 
-        return new LoggedInResource($user);
+        return new LoggedInResource($user->load('role'));
     }
 }
