@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 
-export const useAppStore = defineStore('auth', {
+export const useAppStore = defineStore('app', {
     state: (): AuthState => ({
         user: null,
         csrf: false,
@@ -50,41 +50,6 @@ export const useAppStore = defineStore('auth', {
 
         async updateAccountPassword(payload: UpdatePasswordForm) {
             await this.http.put('user/password', payload)
-        },
-
-
-        // Profile Theme Actions
-        async saveProfileTheme(id, payload) {
-            const response = await this.http.post(`/profile/theme`, payload)
-            this.user = response.data.data
-        },
-        async removeProfileTheme(id, payload) {
-            const response = await this.http.post(`/profile/remove-theme`, {
-                themeName: payload
-            })
-            this.user = response.data.data
-        },
-        async setProfileDarkTheme(themeIdx) {
-            const response = await this.http.post(`/profile/dark`, {
-                themeName: themeIdx
-            })
-            this.user = response.data.data
-        },
-        async setProfileLightTheme(themeIdx) {
-            const response = await this.http.post(`/profile/light`, {
-                themeName: themeIdx
-            })
-            this.user = response.data.data
-        },
-
-        async getClientIpAddress() {
-            this.http.get('https://ipinfo.io/json')
-            .then(response => {
-                this.ip_address = response.data.ip
-            }).catch(error => {
-                console.log('>>> Error: ', error)
-                this.ip_address = 'localhost' // TODO: Dev route
-            })
         },
 
         toggleSidebar() {
