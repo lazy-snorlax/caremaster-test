@@ -1,9 +1,10 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
 
-import { components } from './components'
+import './assets/main.css'
+import './style.css'
 
+import { components } from './components'
 import { pinia } from '@/stores'
 
 import router from './router'
