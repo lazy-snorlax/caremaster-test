@@ -37,13 +37,6 @@ body {
 	background: var(--dark-alt) !important;
 	color: var(--white);
 }
-button {
-	cursor: pointer;
-	appearance: none;
-	border: none;
-	outline: none;
-	background: none;
-}
 
 aside {
   background-color: #212529 !important;
