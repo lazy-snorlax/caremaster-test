@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@test.io',
         ]);
 
-        if (app()->environment(['local']) || app()->environment(['staging'])) {
+        if (app()->environment(['local'])) {
             $this->call(LocalSeeder::class);
         }
     }
