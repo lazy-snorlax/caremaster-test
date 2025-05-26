@@ -13,7 +13,7 @@ class AdminDashboardController extends Controller
         return [
             'total_companies' => Company::count(),
             'total_users' => User::count(),
-            'new_users' => 0,
+            'new_users' => User::query()->where('created_at', '>=', now()->subDays(30))->count(),
         ];
     }
 }
