@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { EmployeeResource } from "./employees";
 
 export const useCompanyStore = defineStore('company', {
     state: (): CompanyState => ({
@@ -12,17 +13,14 @@ export const useCompanyStore = defineStore('company', {
         },
         async getCompany(id: number) {
             const response = await this.http.get(`/companies/${id}`)
-            console.log(">>>> ", response.data.data)
             this.company = response.data.data
         },
         async saveCompany(payload) {
             const response = await this.http.post(`/companies/add`, payload)
-            console.log(">>>> ", response.data.data)
             this.company = response.data.data
         },
         async updateCompany(payload) {
             const response = await this.http.put(`/companies/${payload.id}`, payload)
-            console.log(">>>> ", response.data.data)
             this.company = response.data.data
         },
     }
@@ -45,14 +43,7 @@ export type CompanyResource = {
     email: string,
     abn: string,
     address: string,
-    employees: Array<{}>
-}
-export type EmployeeResource = {
-    id: number,
-    first_name: string,
-    last_name: string,
-    email: string,
-    address: string,
+    employees: Array<EmployeeResource>
 }
 
 export type CompanyForm = {
