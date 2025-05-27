@@ -3,40 +3,42 @@
 
     <Container class="ms-auto me-auto">
         <div class="card bg-gray-700 card-md shadow-sm mb-2">
-            <div class="card-body grid grid-cols-5 text-green-500">
-                <div class="mb-1">
+            <div class="card-body grid grid-cols-4 text-green-500">
+                <div class="">
                     <label class="label">
                         <span class="text-green-500 label-text font-bold">Name</span>
                     </label>
                     <input type="text" class="input w-full rounded-md border border-gray-600" v-model="companyName" />
                 </div>
-                <div class="mb-1">
+                <div class="">
                     <label class="label">
                         <span class="text-green-500 label-text font-bold">ABN</span>
                     </label>
                     <input type="text" class="input w-full rounded-md border border-gray-600" v-model="companyAbn" />
                 </div>
-                <div class="mb-1">
+                <div class="">
                     <label class="label">
                         <span class="text-green-500 label-text font-bold">Email</span>
                     </label>
                     <input type="text" class="input w-full rounded-md border border-gray-600" v-model="companyEmail" />
                 </div>
-                <div class="mb-1">
+                <div class="">
                     <label class="label">
                         <span class="text-green-500 label-text font-bold">Address</span>
                     </label>
                     <input type="text" class="input w-full rounded-md border border-gray-600" v-model="companyAddress" />
                 </div>
-                <div class="mt-auto mb-auto text-right">
-                    <button class="btn btn-success" @click="submit">Update Company</button>
-                </div>
+            </div>
+            <div class="text-center mb-2">
+                <button class="btn btn-success" @click="submit">Update Company Details</button>
             </div>
         </div>
 
         <div class="flex mt-10">
             <h2 class="text-3xl text-left text-green-500">EMPLOYEES</h2>
-            <button class="mt-auto ms-auto btn btn-success">+ Employee</button>
+            <router-link :to="{ name: 'employee.add', params: { company: route.params.id }}" class="mt-auto ms-auto">
+                <button class="btn btn-success">+ Employee</button>
+            </router-link>
         </div>
         <div class="card bg-gray-700 text-green-500 card-md shadow-sm mt-3 mb-2">
             <div class="card-body grid grid-cols-5 text-green-500 border-b-2">
@@ -58,8 +60,10 @@
                     <div class="card-title">{{ employee?.email }}</div>
                     <div class="card-title">{{ employee?.address }}</div>
                     <div class="card-title">
-                        <button class="btn btn-soft btn-success">Edit</button>
-                        <button class="btn btn-outline btn-error">Delete</button>
+                        <router-link :to="{ name: 'employee.single', params: { company: companyId, employee: employee.id }}">
+                            <button class="btn btn-soft btn-success">Edit</button>
+                        </router-link>
+                        <button class="btn btn-outline btn-error" @click="removeEmployee(employee.id)">Delete</button>
                     </div>
                 </div>
             </template>
@@ -68,33 +72,26 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onBeforeMount } from 'vue';
-import { useCompanyStore } from '../../stores/companies';
+import { onBeforeMount } from 'vue';
 import { storeToRefs } from 'pinia';
 
+import { useCompanyStore } from '../../stores/companies';
+import { useEmployeeStore } from '../../stores/employees';
+import { getCompanyComputedVals } from '../../composables/company-computed';
 import { useRoute } from 'vue-router';
 
 const route = useRoute()
 
-const { company } = storeToRefs(useCompanyStore())
+const { deleteEmployee } = useEmployeeStore()
 const { getCompany, updateCompany } = useCompanyStore()
-
-const companyName = computed({
-    get() { return company.value?.name },
-    set(newVal) { company.value.name = newVal }
-})
-const companyAbn = computed({
-    get() { return company.value?.abn },
-    set(newVal) { company.value.abn = newVal }
-})
-const companyEmail = computed({
-    get() { return company.value?.email },
-    set(newVal) { company.value.email = newVal }
-})
-const companyAddress = computed({
-    get() { return company.value?.address },
-    set(newVal) { company.value.address = newVal }
-})
+const { company } = storeToRefs(useCompanyStore())
+const { 
+        companyId,
+        companyName,
+        companyAbn,
+        companyEmail,
+        companyAddress
+    } = getCompanyComputedVals()
 
 onBeforeMount(async () => {
     await getCompany(route.params.id)
@@ -113,6 +110,16 @@ const submit = async () => {
         await updateCompany(payload)
     } catch (error) {
         console.log(">>>> Errors: ", error)
+    }
+}
+
+const removeEmployee = async (empId) => {
+    try {
+        if (window.confirm("Are youe sure you want to delete this employee?")) {
+            await deleteEmployee(empId).then(async () => await getCompany(route.params.id))
+        }
+    } catch (error) {
+        console.log(">>>> Delete Employee err: ", error)
     }
 }
 
