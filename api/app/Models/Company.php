@@ -2,17 +2,11 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
-use App\Notifications\ResetPasswordNotification;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOneThrough;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Company extends Authenticatable
+class Company extends Model
 {
     use HasFactory;
 
@@ -27,4 +21,14 @@ class Company extends Authenticatable
         'updated_at' => 'datetime',
         'created_at' => 'datetime',
     ];
+
+    /**
+     * A company has many employees
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function employees() : HasMany
+    {
+        return $this->hasMany(Employee::class);
+    }
 }
