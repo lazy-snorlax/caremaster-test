@@ -1,33 +1,69 @@
-# SkeletonBase
-A full stack project skeleton built using MySQL and Laravel as a backend, with Vue 3 as a frontend. The purpose of this project is to use it as a template or base to build other projects.
+# Dashboard
+A simple company and employemnt management tool built using a Laravel API & a Vue3 frontend, with a MySql database. It takes advantage of user roles, where there is an admin user, and a regular user. An admin user can do the following:
+ - Create new companies & update existing companies
+ - Manage employees for those companies (employees have CRUD function implemented)
 
-## Build 2.0
-### Front-End
-Front end is Vue 3 with Pinia and Bootstrap. This can be substituted with TailwindCSS, or with React or Angular. Basically anything that is installable with NPM.
+This was built using the [SkeletonBase](https://github.com/lazy-snorlax/SkeletonBase) project as an initial starting point, which speed up initial development time.
 
-### Back-End
-The backend is intended as a REST API. Currently PHP 8.3 and Laravel 12, can also be substituted with any other backend web technology (ASP.NET for instance)
-
-### Database
-MySQL is the default database for this project, but MSSQL, SQL Server and PostgreSQL can all be made to work in this environment.
-
-### Web Server
-Currently is an Nginx server
-
-### Docker Containers
-Everything has been containerized for local development environment. Make sure Docker is installed & run:
-```
+## Getting Started
+TO start the application you will need to use [Docker Compose](https://docs.docker.com/compose/).
+```bash
 docker compose up --build
 ```
+This will bring the following containers up.
 
-Once built successfully, you will need to run the package installers manually. this can be done either by running
-```
-docker compose exec <NAME_OF_SERVICE> <COMMAND_TO_EXEC>
-```
-or by bashing into the running service and running any instructions inside the container
-```
-docker compose exec <NAME_OF_SERVICE> bash
+| Name             | Ports (host:container) | Description                                        |
+| ---------------- | ---------------------- | -------------------------------------------------- |
+| mysql            | 33061:3306             | Main MySQL container                               |
+| testing          | 33062:3306             | Testing MySQL container                            |
+| mail             | 8025:80                | Mail interception container                        |
+| api              | 8000:80                | Nginx container for the application                |
+| fpm              |                        | FPM container for the application                  |
+| vue              | 8080:8080              | Vue container for the application                  |
+
+Once the containers are up you will need to create the `.env` file for the API application.
+
+You can copy the `api/.env.example` file. Make sure if you're using your local IP address for development that you update the relevant URLs within these files, including the Sanctum stateful domains.
+
+You should also create local development environment files for the Vue application. You can copy the `vue/.env.development` file making sure you update any relevant URLs.
+
+### Install Composer Dependencies
+You can install Composer dependencies by running the `composer install` command on the FPM container.
+
+```bash
+docker compose exec fpm composer install
 ```
 
+To install a new dependency you can use the `composer require` command.
 
-For more information on each service, check out the docker-compose.yml and Dockerfile file in each folder.
+```bash
+docker compose exec fpm composer require new-dependency
+```
+
+### Install NPM Depdendencies
+You can install NPM dependencies by running the `npm install` command on the Vue container.
+
+```bash
+docker compose exec vue npm install
+```
+
+To install a new dependency you can use the `npm install` command.
+
+```bash
+docker compose exec vue npm install new-dependency
+```
+
+### Command to generate application key
+```bash
+docker compose exec fpm php artisan key:generate
+```
+
+### Command to run Database Seeder
+```bash
+docker compose exec fpm php artisan migrate:fresh --seed
+```
+
+### Command to run PHPUnit tests
+```bash
+docker compose exec fpm ./vendor/bin/phpunit
+```
