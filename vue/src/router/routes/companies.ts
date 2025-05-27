@@ -2,6 +2,8 @@ import { routes } from "../../utilities/routes";
 import CompanyList from "../../views/admin/CompanyList.vue";
 import Company from "../../views/admin/Company.vue";
 import CompanyAdd from "../../views/admin/CompanyAdd.vue";
+import Employee from "../../views/admin/Employee.vue";
+import EmployeeAdd from "../../views/admin/EmployeeAdd.vue";
 
 export default routes(
     {
@@ -24,6 +26,16 @@ export default routes(
             path: '/companies/:id',
             name: 'companies.single',
             component: Company,
+        },
+        {
+            path: '/companies/:company/employee/:employee',
+            name: 'employee.single',
+            component: Employee,
+        },
+        {
+            path: '/companies/:company/employee/add',
+            name: 'employee.add',
+            component: EmployeeAdd,
         },
     ]
 )
