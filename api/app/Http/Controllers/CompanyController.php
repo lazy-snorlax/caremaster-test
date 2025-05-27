@@ -23,7 +23,7 @@ class CompanyController extends Controller
      * Display the specified resource.
      */
     public function show(string $company) {
-        return new CompanyResource(Company::find($company));
+        return new CompanyResource(Company::find($company)->load('employees'));
     }
 
     /**

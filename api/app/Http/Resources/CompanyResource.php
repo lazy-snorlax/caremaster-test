@@ -15,7 +15,9 @@ class CompanyResource extends JsonResource{
             'email' => $this->email,
             'abn' => (int)$this->abn,
             'address' => $this->address,
-            'employees' => []
+            'employees' => $this->whenLoaded('employees', function () {
+                return EmployeeResource::collection($this->employees);
+            })
         ];
     }
 }
