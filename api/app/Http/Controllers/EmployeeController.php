@@ -44,8 +44,9 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employee $employee, $id)
+    public function destroy(Employee $employee)
     {
-        dd($employee);
+        $employee->delete();
+        return response()->noContent();
     }
 }
