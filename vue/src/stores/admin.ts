@@ -11,7 +11,6 @@ export const useAdminStore = defineStore('admin', {
     actions: {
         async getWidgets() {
             const response = await this.http.get('/dashboard')
-            console.log(">>>> ", response.data)
             this.widgets = response.data
         }
     }
