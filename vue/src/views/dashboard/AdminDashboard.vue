@@ -8,14 +8,14 @@
         </div>
         <div class="card w-95 bg-gray-700 card-md shadow-sm">
             <div class="card-body">
-                <h2 class="card-title">Total Users</h2>
-                <p class="text-2xl">{{ widgets.total_users }}</p>
+                <h2 class="card-title">Total Employees</h2>
+                <p class="text-2xl">{{ widgets.total_employees }}</p>
             </div>
         </div>
         <div class="card w-95 bg-gray-700 card-md shadow-sm">
             <div class="card-body">
-                <h2 class="card-title">New Users</h2>
-                <p class="text-2xl">{{ widgets.new_users }}</p>
+                <h2 class="card-title">Total Users</h2>
+                <p class="text-2xl">{{ widgets.total_users }}</p>
             </div>
         </div>
     </div>

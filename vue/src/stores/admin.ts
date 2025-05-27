@@ -4,8 +4,8 @@ export const useAdminStore = defineStore('admin', {
     state: (): AdminState => ({
         widgets: {
             total_companies: 0,
+            total_employees: 0,
             total_users: 0,
-            new_users: 0,
         }
     }),
     actions: {
@@ -20,15 +20,15 @@ export const useAdminStore = defineStore('admin', {
 type AdminState = {
     widgets: {
         total_companies: number
+        total_employees: number
         total_users: number
-        new_users: number
     }
 }
 
 export type WidgetResource = {
     widgets: {
         total_companies: number
+        total_employees: number
         total_users: number
-        new_users: number
     }
 }
