@@ -1,7 +1,7 @@
 <template>
     <Header :title="'Dashboard'" :subtitle="''" />
 
-    <Container class="dashboard">
+    <Container class="dashboard ms-auto me-auto">
         <template v-if="loggedInUser.role.name == 'admin'">
             <AdminDashboard class="container" />
         </template>

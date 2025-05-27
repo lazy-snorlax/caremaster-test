@@ -1,15 +1,15 @@
 <template>
-    <div class="grid grid-cols-3 text-green-500 ms-10 me-10">
-        <div class="card w-95 bg-gray-700 card-md shadow-sm">
+    <div class="grid grid-cols-2 gap-10 w-full text-green-500">
+        <div class="card w-full bg-gray-700 card-md shadow-sm">
             <div class="card-body">
-                <h2 class="card-title">Total Users</h2>
-                <p class="text-2xl">30</p>
+                <h2 class="card-title">Employees</h2>
+                <p class="text-2xl"></p>
             </div>
         </div>
-        <div class="card w-95 bg-gray-700 card-md shadow-sm">
+        <div class="card w-full bg-gray-700 card-md shadow-sm">
             <div class="card-body">
-                <h2 class="card-title">New Users</h2>
-                <p class="text-2xl">10</p>
+                <h2 class="card-title">New Employees</h2>
+                <p class="text-2xl"></p>
             </div>
         </div>
     </div>
