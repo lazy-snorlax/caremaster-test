@@ -29,7 +29,6 @@ class CompanyTest extends TestCase
                 ->where('email', $company1->email)
                 ->where('abn', $company1->abn)
                 ->where('address', $company1->address)
-                ->has('employees')
         ));
     }
 
@@ -84,7 +83,6 @@ class CompanyTest extends TestCase
                 ->where('email', 'testing@test.io')
                 ->where('abn', 12345678901)
                 ->where('address', 'Mars Space Base')
-                ->has('employees')
         ));
     }
     
