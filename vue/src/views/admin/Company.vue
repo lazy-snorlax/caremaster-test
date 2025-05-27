@@ -48,24 +48,26 @@
                 <div class="card-title">ADDRESS</div>
                 <div class="card-title">ACTIONS</div>
             </div>
-            <template v-if="company?.employees.length == 0">
-                <div class="card-body">
-                    <div class="text-2xl text-center">No employees found</div>
-                </div>
-            </template>
-            <template v-else>
-                <div v-for="employee in company?.employees" class="card-body py-3 grid grid-cols-5 listitem">
-                    <div class="card-title">{{ employee?.first_name }}</div>
-                    <div class="card-title">{{ employee?.last_name }}</div>
-                    <div class="card-title">{{ employee?.email }}</div>
-                    <div class="card-title">{{ employee?.address }}</div>
-                    <div class="card-title">
-                        <router-link :to="{ name: 'employee.single', params: { company: companyId, employee: employee.id }}">
-                            <button class="btn btn-soft btn-success">Edit</button>
-                        </router-link>
-                        <button class="btn btn-outline btn-error" @click="removeEmployee(employee.id)">Delete</button>
+            <template v-if="company?.employees">
+                <template v-if="company?.employees.length == 0">
+                    <div class="card-body">
+                        <div class="text-2xl text-center">No employees found</div>
                     </div>
-                </div>
+                </template>
+                <template v-else>
+                    <div v-for="employee in company?.employees" class="card-body py-3 grid grid-cols-5 listitem">
+                        <div class="card-title">{{ employee?.first_name }}</div>
+                        <div class="card-title">{{ employee?.last_name }}</div>
+                        <div class="card-title">{{ employee?.email }}</div>
+                        <div class="card-title">{{ employee?.address }}</div>
+                        <div class="card-title">
+                            <router-link :to="{ name: 'employee.single', params: { company: companyId, employee: employee.id }}">
+                                <button class="btn btn-soft btn-success">Edit</button>
+                            </router-link>
+                            <button class="btn btn-outline btn-error" @click="removeEmployee(employee.id)">Delete</button>
+                        </div>
+                    </div>
+                </template>
             </template>
         </div>
     </Container>
