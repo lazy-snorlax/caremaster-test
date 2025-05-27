@@ -49,6 +49,6 @@ class CompanyController extends Controller
         $company->fill($request->only(['name', 'email', 'abn', 'address']));
         $company->save();
 
-        return new CompanyResource($company);
+        return new CompanyResource($company->load('employees'));
     }
 }
