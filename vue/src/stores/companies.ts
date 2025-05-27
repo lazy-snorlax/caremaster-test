@@ -47,6 +47,13 @@ export type CompanyResource = {
     address: string,
     employees: Array<{}>
 }
+export type EmployeeResource = {
+    id: number,
+    first_name: string,
+    last_name: string,
+    email: string,
+    address: string,
+}
 
 export type CompanyForm = {
     name: string
