@@ -6,7 +6,7 @@ A simple company and employemnt management tool built using a Laravel API & a Vu
 This was built using the [SkeletonBase](https://github.com/lazy-snorlax/SkeletonBase) project as an initial starting point, which speed up initial development time.
 
 ## Getting Started
-TO start the application you will need to use [Docker Compose](https://docs.docker.com/compose/).
+To start the application you will need to use [Docker Compose](https://docs.docker.com/compose/).
 ```bash
 docker compose up --build
 ```
