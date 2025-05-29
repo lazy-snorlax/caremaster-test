@@ -1,0 +1,39 @@
+volumes:
+  dbdata:
+
+services:
+  app-fpm:
+    build:
+      context: ./api/
+      dockerfile: Dockerfile.prod
+    image: caremaster-test-build-fpm
+    expose:
+      - "9000"
+  app-api:
+    build:
+      context: ./api/
+      dockerfile: nginx.docker
+    image: caremaster-test-build-api
+    ports:
+      - "8000:80"
+    depends_on:
+      - app-fpm
+  app-vue:
+    build:
+      context: ./vue/
+      dockerfile: prod.docker
+    image: caremaster-test-build-vue
+    ports:
+      - "8080:80"
+  mysql:
+    image: mysql:8.0.23
+    ports:
+      - "33061:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    restart: always
+    environment:
+      - "MYSQL_DATABASE=app"
+      - "MYSQL_USER=app"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_ROOT_PASSWORD=secret"
