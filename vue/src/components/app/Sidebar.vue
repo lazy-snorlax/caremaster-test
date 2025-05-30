@@ -19,7 +19,7 @@
 		<div class="bottom">
 			<ul class="nav">
 				<li class="nav-item">
-					<a class="nav-link" @click="logout">Logout</a>
+					<a class="nav-link cursor-pointer" @click="logout">Logout</a>
 				</li>
 			</ul>
 		</div>
@@ -38,7 +38,3 @@ const { logout } = useLogout()
 const { loggedInUser } = useLoggedInUser()
 
 </script>
-
-<style lang="scss" scoped>
-
-</style>
