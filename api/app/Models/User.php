@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Silber\Bouncer\Database\Role;
 
 class User extends Authenticatable
 {
