@@ -22,8 +22,26 @@ class AuthenticationTest extends TestCase
         $response->assertSuccessful();
     }
 
-    public function testCanGetLoggedInUser() {        
+    public function testCanGetLoggedInAdminUser() {        
         $response = $this->be($user = $this->createAdmin())->getJson('api/user');
+        $response->assertSuccessful();
+        
+        $response->assertJson(fn (AssertableJson $json) => $json
+            ->has('data', fn (AssertableJson $json) => $json
+                ->where('id', $user->id)
+                ->where('name', $user->name)
+                ->where('email', $user->email)
+                ->has('role', fn (AssertableJson $json) => $json
+                    ->where('id', $user->role->id)
+                    ->where('name', $user->role->name)
+                    ->where('title', $user->role->title)
+                    ->has('abilities')
+                )
+        ));
+    }
+
+    public function testCanGetLoggedInUser() {        
+        $response = $this->be($user = $this->createUser())->getJson('api/user');
         $response->assertSuccessful();
         
         $response->assertJson(fn (AssertableJson $json) => $json
