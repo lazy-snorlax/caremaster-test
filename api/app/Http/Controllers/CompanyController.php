@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCompanyRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Resources\CompanyResource;
@@ -29,7 +30,7 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(StoreCompanyRequest $request) {
         $company = Company::create([
             'name' => $request->input('name'),
             'abn' => $request->input('abn'),
