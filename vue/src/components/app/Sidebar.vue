@@ -13,6 +13,9 @@
 				<li class="nav-item">
 					<router-link :to="{ name: 'companies' }" class="nav-link">Companies</router-link>
 				</li>
+				<li class="nav-item">
+					<router-link :to="{ name: 'users' }" class="nav-link">Users</router-link>
+				</li>
 			</ul>
 		</div>
 		
