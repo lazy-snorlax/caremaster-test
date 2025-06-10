@@ -38,4 +38,8 @@ Route::middleware(['auth:sanctum', 'isadmin'])->group(function () {
     Route::post('/employees/add', [Controllers\EmployeeController::class, 'store']);
     Route::put('/employees/{employee}', [Controllers\EmployeeController::class, 'update']);
     Route::delete('/employees/{employee}', [Controllers\EmployeeController::class, 'destroy']);
+
+    // Users
+    Route::get('/users', [Controllers\UserController::class, 'index']);
+    
 });
