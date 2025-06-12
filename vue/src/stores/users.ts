@@ -9,13 +9,21 @@ export const useUserStore = defineStore('user', {
         async getUsers() {
             const response = await this.http.get('/users')
             this.list = response.data.data
+        },
+        async getUser(id: number) {
+            const response = await this.http.get(`/users/${id}`)
+            this.user = response.data.data
+        },
+        async updateUser(payload) {
+            const response = await this.http.put(`/users/${payload.id}`, payload)
+            this.user = response.data.data
         }
     }
 })
 
 type UserState = {
     list: Array<UserResource>,
-    user: UserResource | null
+    user: UserResource
 }
 
 export type UserResource = {
