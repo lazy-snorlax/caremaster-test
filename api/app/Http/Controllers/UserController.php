@@ -13,4 +13,28 @@ class UserController extends Controller
         $users = User::get();
         return UserResource::collection($users->load('role'));
     }
+
+    public function show(string $user) {
+        return new UserResource(User::find($user)->load('role'));
+    }
+
+    public function store(Request $request) {
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+        ]);
+        return new UserResource($user->load('role'));
+    }
+
+    public function update(Request $request, User $user) {
+        $user->fill($request->only(['name', 'email']));
+        $user->save();
+
+        return new UserResource($user->load('role'));
+    }
+
+    public function destroy(User $user) {
+        $user->delete();
+        return response()->noContent();
+    }
 }

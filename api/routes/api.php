@@ -39,7 +39,11 @@ Route::middleware(['auth:sanctum', 'isadmin'])->group(function () {
     Route::put('/employees/{employee}', [Controllers\EmployeeController::class, 'update']);
     Route::delete('/employees/{employee}', [Controllers\EmployeeController::class, 'destroy']);
 
-    // Users
+    // User Management
     Route::get('/users', [Controllers\UserController::class, 'index']);
+    Route::get('/users/{id}', [Controllers\UserController::class, 'show']);
+    Route::post('/users/add', [Controllers\UserController::class, 'store']);
+    Route::put('/users/{user}', [Controllers\UserController::class, 'update']);
+    Route::delete('/users/{user}', [Controllers\UserController::class, 'destroy']);
     
 });
