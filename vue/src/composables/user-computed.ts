@@ -13,10 +13,20 @@ export function getUserComputedVals() {
         get() { return user.value?.email },
         set(newVal: string) { user.value.email = newVal }
     })
+    const userRole = computed({
+        get() { return user.value?.role },
+        set(newVal: string) { user.value.role = newVal }
+    })
+    const userStatus = computed({
+        get() { return user.value?.status },
+        set(newVal: string) { user.value.status = newVal }
+    })
 
     return {
         userId,
         userName,
         userEmail,
+        userRole,
+        userStatus,
     }
 }
