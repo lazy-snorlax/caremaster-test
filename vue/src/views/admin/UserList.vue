@@ -3,9 +3,9 @@
 
     <Container class="ms-auto me-auto">
         <div class="text-center mb-3">
-            <!-- <router-link :to="{ name: 'users.add' }"> -->
+            <router-link :to="{ name: 'users.add' }">
                 <button class="btn btn-success">+ User</button>
-            <!-- </router-link> -->
+            </router-link>
         </div>
         <div class="card bg-gray-700 card-md shadow-sm mb-2">
             <div class="card-body grid grid-cols-4 text-green-500 border-b-2">
@@ -20,7 +20,7 @@
                         <div class="card-title">{{ user.name }}</div>
                         <div class="card-title">{{ user.email }}</div>
                         <div class="card-title">{{ user.role }}</div>
-                        <div class="card-title">{{ user.status }}</div>
+                        <div class="card-title">{{ user.status.toUpperCase() }}</div>
                     </div>
                 </router-link>
             </template>
