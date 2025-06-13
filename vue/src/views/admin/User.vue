@@ -34,6 +34,7 @@
                         <select class="select w-full" v-model="selectedStatus">
                             <option disabled value="">Please select one</option>
                             <option>ENABLED</option>
+                            <option>PENDING</option>
                             <option>DISABLED</option>
                         </select>
                     </div>
@@ -79,6 +80,7 @@ const submit = async () => {
             name: userName.value,
             email: userEmail.value,
             role: userRole.value,
+            status: userStatus.value,
         }
         console.log(">>> Update Payload: ", payload)
         updateUser(payload)
