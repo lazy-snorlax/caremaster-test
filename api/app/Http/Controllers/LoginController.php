@@ -28,6 +28,9 @@ class LoginController extends Controller
             // update last login?
 
             // check user enabled
+            if ($user->status === "DISABLED") {
+                $auth->guard('web')->logout();
+            }
 
             // send user verification email
 
