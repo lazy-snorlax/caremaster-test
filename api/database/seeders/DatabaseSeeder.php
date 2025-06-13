@@ -21,11 +21,13 @@ class DatabaseSeeder extends Seeder
         User::factory()->admin()->create([
             'name' => 'Admin User',
             'email' => 'admin@test.io',
+            'status' => 'Enabled',
         ]);
         
         User::factory()->user()->create([
             'name' => 'User',
             'email' => 'user@test.io',
+            'status' => 'Enabled',
         ]);
 
         if (app()->environment(['local'])) {

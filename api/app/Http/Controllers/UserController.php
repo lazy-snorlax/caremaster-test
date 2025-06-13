@@ -28,7 +28,7 @@ class UserController extends Controller
     }
 
     public function update(Request $request, User $user) {
-        $user->fill($request->only(['name', 'email']));
+        $user->fill($request->only(['name', 'email', 'status']));
         $user->save();
 
         $user->retract('admin');
