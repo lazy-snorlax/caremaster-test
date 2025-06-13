@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Resources\LoggedInResource;
 use App\Http\Resources\UserResource;
 
 class UserController extends Controller
@@ -22,7 +21,9 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
+            'password' => $request->input('password')
         ]);
+        $user->assign('user'); // New users default to User role
         return new UserResource($user->load('role'));
     }
 
@@ -30,6 +31,8 @@ class UserController extends Controller
         $user->fill($request->only(['name', 'email']));
         $user->save();
 
+        $user->retract('admin');
+        $user->assign(strtolower($request->input('role')));
         return new UserResource($user->load('role'));
     }
 
