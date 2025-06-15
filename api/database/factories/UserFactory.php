@@ -38,6 +38,21 @@ class UserFactory extends Factory
         ]);
     }
 
+    public function enabled()
+    {
+        return $this->state(['status' => "ENABLED"]);
+    }
+
+    public function disabled()
+    {
+        return $this->state(['status' => "DISABLED"]);
+    }
+
+    public function pending()
+    {
+        return $this->state(['status' => "PENDING"]);
+    }
+
 
     public function user()
     {
