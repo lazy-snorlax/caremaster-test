@@ -21,7 +21,8 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => $request->input('password')
+            'password' => $request->input('password'),
+            'status' => "PENDING"
         ]);
         $user->assign('user'); // New users default to User role
         return new UserResource($user->load('role'));
@@ -31,8 +32,12 @@ class UserController extends Controller
         $user->fill($request->only(['name', 'email', 'status']));
         $user->save();
 
-        $user->retract('admin');
-        $user->assign(strtolower($request->input('role')));
+        // if ($request->has('role')) {
+        //     if ($request->input('role') !== "Admin") {
+        //         $user->retract('admin');
+        //     }
+        //     $user->assign(strtolower($request->input('role')));
+        // }
         return new UserResource($user->load('role'));
     }
 
