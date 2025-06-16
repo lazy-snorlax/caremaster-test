@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import {routes as defineRoutes} from '@/utilities/routes'
 import routes from './routes'
 import authenticated from './guards/authenticated'
 // import authorized from './guards/authorized'
@@ -8,19 +7,6 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     ...routes,
-    // ...defineRoutes(
-    //   {
-    //     template: 'error',
-    //     restricted: false,
-    //   },
-    //   [
-    //     {
-    //       path: '/:invalid(.*)*',
-    //       name: 'error.not-found',
-    //       component: ErrorNotFound
-    //     }
-    //   ]
-    // )
   ]
 })
 
